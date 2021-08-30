@@ -1,6 +1,6 @@
 import Head from 'next/head'
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   // fetch list of posts
   const res = await fetch(
     'https://cfcross1.sitecore-saas---staging.workers.dev/'
