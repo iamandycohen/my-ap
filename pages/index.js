@@ -1,21 +1,19 @@
 import Head from 'next/head'
 
-import Post from '../components/post'
-
 export async function getStaticProps() {
   // fetch list of posts
-  const response = await fetch(
-    'https://jsonplaceholder.typicode.com/posts?_page=1'
+  const res = await fetch(
+    'https://cfcross1.sitecore-saas---staging.workers.dev/'
   )
-  const postList = await response.json()
+  const data = await res.json()
   return {
     props: {
-      postList,
+      data,
     },
   }
 }
 
-export default function IndexPage({ postList }) {
+export default function IndexPage({ data }) {
   return (
     <main>
       <Head>
@@ -25,9 +23,7 @@ export default function IndexPage({ postList }) {
       <h1>List of posts</h1>
 
       <section>
-        {postList.map((post) => (
-          <Post {...post} key={post.id} />
-        ))}
+        {JSON.stringify(data)}
       </section>
     </main>
   )
